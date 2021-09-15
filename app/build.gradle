@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply from: "../basic.gradle"
+
+android {
+
+    defaultConfig {
+        applicationId "com.lauter.androidappbases"
+        multiDexEnabled true
+    }
+}
+
+dependencies {
+    implementation project(':common')
+}
