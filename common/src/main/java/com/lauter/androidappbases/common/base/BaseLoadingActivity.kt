@@ -12,6 +12,7 @@ abstract class BaseLoadingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getLayoutId()?.let { setContentView(it) }
+        init(savedInstanceState)
         val frameLayout = window.decorView as FrameLayout
         val params = FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.MATCH_PARENT,

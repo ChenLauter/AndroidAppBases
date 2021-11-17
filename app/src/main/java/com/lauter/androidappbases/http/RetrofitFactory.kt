@@ -3,9 +3,9 @@ package com.lauter.androidappbases.http
 
 import android.os.Build
 import com.lauter.androidappbases.common.BaseApp.Companion.getContext
+import com.lauter.androidappbases.common.constant.CommonConst.NetWork.BASE_URL
+import com.lauter.androidappbases.common.constant.CommonConst.NetWork.DEFAULT_TIMEOUT
 import com.lauter.androidappbases.common.utils.DeviceUtil
-import com.lauter.androidappbases.constant.CommonConst.NetWork.BASE_URL
-import com.lauter.androidappbases.constant.CommonConst.NetWork.DEFAULT_TIMEOUT
 import okhttp3.*
 import retrofit2.Retrofit
 import java.io.File

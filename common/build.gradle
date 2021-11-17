@@ -44,4 +44,6 @@ dependencies {
     // 下拉刷新
     api 'com.scwang.smart:refresh-layout-kernel:2.0.3'
     api 'com.scwang.smart:refresh-header-classics:2.0.3'
+    // 状态栏管理
+    api 'com.jaeger.statusbarutil:library:1.5.1'
 }

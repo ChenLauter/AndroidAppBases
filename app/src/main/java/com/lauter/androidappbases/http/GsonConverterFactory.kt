@@ -6,7 +6,7 @@ import com.google.gson.JsonIOException
 import com.google.gson.TypeAdapter
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonToken
-import com.lauter.androidappbases.constant.CommonConst
+import com.lauter.androidappbases.common.constant.CommonConst
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
