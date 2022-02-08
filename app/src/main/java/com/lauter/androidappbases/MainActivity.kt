@@ -1,16 +1,13 @@
 package com.lauter.androidappbases
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jaeger.library.StatusBarUtil
-import com.lauter.androidappbases.common.base.BaseLoadingActivity
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : BaseLoadingActivity() {
 
-    override fun init(savedInstanceState: Bundle?) {
-        StatusBarUtil.setLightMode(this)
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
     }
-
-    override fun getLayoutId(): Int = R.layout.activity_main
-
 }

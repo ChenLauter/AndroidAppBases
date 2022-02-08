@@ -7,11 +7,11 @@ apply from: "../basic.gradle"
 android {
 
     defaultConfig {
-        applicationId "com.lauter.androidappbases"
+        applicationId = appPackageName
         multiDexEnabled true
     }
 }
 
 dependencies {
-    implementation project(':common')
+    implementation project(":basic_common")
 }

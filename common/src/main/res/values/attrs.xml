@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="FontTextView">
-        <attr name="font_type" format="enum">
-        </attr>
-    </declare-styleable>
-</resources>

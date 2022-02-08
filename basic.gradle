@@ -2,13 +2,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+ext {
+    appPackageName = "com.lauter.androidappbases"
+}
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "0.0.1"
         compileOptions {
@@ -35,9 +38,8 @@ android {
         }
     }
 
-    dataBinding {
-        //noinspection DataBindingWithoutKapt
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
 
 }

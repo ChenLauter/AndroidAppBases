@@ -5,6 +5,6 @@
     android:id="@+id/host_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.lauter.androidappbases.common.navigation.NavHostFragment"
+    android:name="com.lauter.androidappbases.base.navigation.NavHostFragmentHideShow"
     app:defaultNavHost="true"
     app:navGraph="@navigation/mobile_navigation" />

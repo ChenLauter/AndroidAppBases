@@ -1,0 +1,26 @@
+if (isModuleDebug.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply from: "../basic.gradle"
+
+android {
+    defaultConfig {
+        if (isModuleDebug.toBoolean()) {
+            applicationId = appPackageName + "." + getProject().name
+        }
+    }
+
+}
+
+dependencies {
+    if (isModuleDebug.toBoolean()){
+        implementation project(":basic_component")
+    }
+}
+
+
+
+
