@@ -2,4 +2,5 @@ apply from: "../basic_component_bebug.gradle"
 
 dependencies {
     implementation project(":basic_common")
+    implementation 'io.github.youth5201314:banner:2.2.2'
 }

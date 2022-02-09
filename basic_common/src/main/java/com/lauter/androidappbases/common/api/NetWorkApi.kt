@@ -1,4 +1,4 @@
-package com.lauter.androidappbases.common.network
+package com.lauter.androidappbases.common.api
 
 import com.lauter.androidappbases.network.BaseNetworkApi
 import okhttp3.OkHttpClient
@@ -11,8 +11,8 @@ class NetWorkApi : BaseNetworkApi() {
         val INSTANCE by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { NetWorkApi() }
     }
 
-    private val debugUrl = ""
-    private val releaseUrl = ""
+    private val debugUrl = "https://www.wanandroid.com"
+    private val releaseUrl = "https://www.wanandroid.com"
     private val isDebug = true
 
     override fun setOkHttpBuilder(): OkHttpClient.Builder {
