@@ -7,8 +7,5 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="tab_text_active">#FF5722</color>
-    <color name="tab_text_inactive">#A5A5A5</color>
-    <color name="tab_icon_active">#FF5722</color>
-    <color name="tab_icon_inactive">#A5A5A5</color>
+    <color name="nav_inactive">#A5A5A5</color>
 </resources>

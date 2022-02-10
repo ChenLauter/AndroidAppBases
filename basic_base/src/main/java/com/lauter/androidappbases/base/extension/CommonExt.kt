@@ -2,6 +2,7 @@ package com.lauter.androidappbases.base.extension
 
 import android.content.Context
 import android.text.TextUtils
+import android.util.TypedValue
 import android.widget.Toast
 import androidx.annotation.StringRes
 
@@ -20,4 +21,8 @@ fun Context.longToast(content: String) {
 
 fun Context.longToast(@StringRes id: Int) {
     toast(getString(id), Toast.LENGTH_LONG)
+}
+
+fun Context.dp2px(dp: Float): Float {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics)
 }

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
+import com.lauter.androidappbases.base.R
 import com.lauter.androidappbases.base.utils.ParamUtil
 import com.lauter.androidappbases.base.utils.StatusBarUtil
 
@@ -115,25 +116,33 @@ abstract class BaseFragment<BD: ViewDataBinding> : Fragment() {
 
     // 防抖
     private var lastNavTime = 0L
+    private fun canNav(): Boolean {
+        val now = System.currentTimeMillis()
+        if (now - lastNavTime < 1000) {
+            return false
+        }
+        lastNavTime = now
+        return true
+    }
 
     /***
      * 带有默认动画的deep link跳转
      */
-    protected fun navigate(url: String, navBuilder: NavOptions.Builder?=null) {
-        try {
-            val now = System.currentTimeMillis()
-            if (now - lastNavTime < 2000) {
-                return
+    protected fun navWithAnim(uri: Uri) {
+        if (canNav()) {
+            try {
+                nav().navigate(
+                    uri,
+                    NavOptions.Builder()
+                        .setEnterAnim(R.anim.tran_enter)
+                        .setExitAnim(R.anim.tran_exit)
+                        .setPopExitAnim(R.anim.tran_pop_exit)
+                        .setPopEnterAnim(R.anim.tran_pop_enter)
+                        .build()
+                )
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            val builder = navBuilder ?: NavOptions.Builder()
-//            builder.setEnterAnim(R.anim.right_in)
-//                .setExitAnim(R.anim.left_out)
-//                .setPopExitAnim(R.anim.right_out)
-//                .setPopEnterAnim(R.anim.left_in)
-            nav().navigate(Uri.parse(url),builder.build())
-            lastNavTime = now
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deeplink_web">app://web/{loadUrl}&amp;{title}</string>
+    <string name="deeplink_login">app://user/login</string>
+</resources>

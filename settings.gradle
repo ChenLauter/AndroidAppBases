@@ -9,7 +9,8 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidAppBases"
 include ':app'
 include ':basic_base'
-include ':basic_common'
 include ':basic_network'
-include ':module_home'
+include ':basic_common'
 include ':basic_component'
+include ':module_home'
+include ':module_user'

@@ -5,6 +5,8 @@
     android:id="@+id/mobile_navigation.xml"
     app:startDestination="@id/mainFragment">
 
+    <include app:graph="@navigation/nav_graph_home" />
+    <include app:graph="@navigation/nav_graph_user" />
 
     <fragment
         android:id="@+id/mainFragment"

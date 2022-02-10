@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_user"
+    app:startDestination="@id/mineFragment">
+
+    <include app:graph="@navigation/nav_graph_common" />
+    
+    <fragment
+        android:id="@+id/mineFragment"
+        android:name="com.lauter.androidappbases.module.user.MineFragment"
+        android:label="MineFragment"
+        tools:layout="@layout/fragment_mine"/>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.lauter.androidappbases.module.user.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+
+        <deepLink
+            app:uri="@string/deeplink_login"/>
+    </fragment>
+</navigation>
