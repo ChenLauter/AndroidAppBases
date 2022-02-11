@@ -13,4 +13,6 @@ dependencies {
 
     api project(':basic_base')
     api project(':basic_network')
+
+    api 'com.jaeger.statusbarutil:library:1.5.1'
 }

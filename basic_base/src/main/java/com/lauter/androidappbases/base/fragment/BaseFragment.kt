@@ -114,6 +114,14 @@ abstract class BaseFragment<BD: ViewDataBinding> : Fragment() {
         return NavHostFragment.findNavController(this)
     }
 
+    protected fun getDefNavOptionBuilder(): NavOptions.Builder {
+        return NavOptions.Builder()
+            .setEnterAnim(R.anim.tran_enter)
+            .setExitAnim(R.anim.tran_exit)
+            .setPopExitAnim(R.anim.tran_pop_exit)
+            .setPopEnterAnim(R.anim.tran_pop_enter)
+    }
+
     // 防抖
     private var lastNavTime = 0L
     private fun canNav(): Boolean {
@@ -133,12 +141,21 @@ abstract class BaseFragment<BD: ViewDataBinding> : Fragment() {
             try {
                 nav().navigate(
                     uri,
-                    NavOptions.Builder()
-                        .setEnterAnim(R.anim.tran_enter)
-                        .setExitAnim(R.anim.tran_exit)
-                        .setPopExitAnim(R.anim.tran_pop_exit)
-                        .setPopEnterAnim(R.anim.tran_pop_enter)
-                        .build()
+                    getDefNavOptionBuilder().build()
+                )
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    protected fun navWithAnim(id: Int, bundle: Bundle?) {
+        if (canNav()) {
+            try {
+                nav().navigate(
+                    id,
+                    bundle,
+                    getDefNavOptionBuilder().build()
                 )
             } catch (e: Exception) {
                 e.printStackTrace()

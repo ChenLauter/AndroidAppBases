@@ -28,8 +28,8 @@ class HomeFragment: BaseVmFragment<HomeViewModel,FragmentHomeBinding>() {
 
     override fun setOnClick() {
         super.setOnClick()
-        binding.btnLogin.setOnClickListener {
-            navWithAnim(CommonDeeplink.loginUri)
+        binding.homeToolbar.laySearch.setOnClickListener {
+            navWithAnim(R.id.action_homeFragment_to_searchFragment,null)
         }
     }
 }

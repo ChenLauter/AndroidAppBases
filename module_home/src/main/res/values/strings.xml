@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="module_name">首页</string>
+    <string name="search_all">从入门到放弃</string>
 </resources>
