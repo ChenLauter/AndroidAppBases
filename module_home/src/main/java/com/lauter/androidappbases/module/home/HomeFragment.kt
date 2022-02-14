@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.lauter.androidappbases.base.fragment.BaseVmFragment
 import com.lauter.androidappbases.common.CommonDeeplink
 import com.lauter.androidappbases.module.home.databinding.FragmentHomeBinding
+import com.lauter.androidappbases.module.home.deeplink.HomeDeeplink
 
 class HomeFragment: BaseVmFragment<HomeViewModel,FragmentHomeBinding>() {
 
@@ -29,7 +30,7 @@ class HomeFragment: BaseVmFragment<HomeViewModel,FragmentHomeBinding>() {
     override fun setOnClick() {
         super.setOnClick()
         binding.homeToolbar.laySearch.setOnClickListener {
-            navWithAnim(R.id.action_homeFragment_to_searchFragment,null)
+            navWithAnim(HomeDeeplink.searchUri)
         }
     }
 }

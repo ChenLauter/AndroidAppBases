@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -50,10 +51,7 @@ abstract class BaseFragment<BD: ViewDataBinding> : Fragment() {
             //将ViewDataBinding生命周期与Fragment绑定
             binding.lifecycleOwner = viewLifecycleOwner
             //设置状态栏高度
-            val id = resources.getIdentifier("fake_status_bar","id",context?.packageName)
-            binding.root.findViewById<View>(id)?.let { bar ->
-                bar.layoutParams.height = StatusBarUtil.getStatusBarHeight()
-            }
+            StatusBarUtil.setFakeStatusBarViewHeight("fake_status_bar_view", binding.root)
             return binding.root
         }
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -149,7 +147,7 @@ abstract class BaseFragment<BD: ViewDataBinding> : Fragment() {
         }
     }
 
-    protected fun navWithAnim(id: Int, bundle: Bundle?) {
+    protected fun navWithAnim(@IdRes id: Int, bundle: Bundle?) {
         if (canNav()) {
             try {
                 nav().navigate(
