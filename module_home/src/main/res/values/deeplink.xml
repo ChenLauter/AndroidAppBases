@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="deeplink_search">app://home/search</string>
-    <string name="deeplink_search_result">app://home/search/result</string>
+    <string name="deeplink_search_result">app://home/search/result?key={key}</string>
 </resources>

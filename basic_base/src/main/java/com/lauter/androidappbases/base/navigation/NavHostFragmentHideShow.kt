@@ -1,8 +1,8 @@
 package com.lauter.androidappbases.base.navigation
 
 import android.view.View
-import androidx.navigation.Navigator
-import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.NavHostController
+import androidx.navigation.fragment.DialogFragmentNavigator
 import androidx.navigation.fragment.NavHostFragment
 import com.lauter.androidappbases.base.R
 
@@ -13,11 +13,10 @@ import com.lauter.androidappbases.base.R
  */
 class NavHostFragmentHideShow : NavHostFragment() {
 
-
-    override fun createFragmentNavigator(): Navigator<out FragmentNavigator.Destination> {
-        return FragmentNavigatorHideShow(requireContext(), childFragmentManager, containerId)
+    override fun onCreateNavHostController(navHostController: NavHostController) {
+        navController.navigatorProvider.addNavigator(DialogFragmentNavigator(requireContext(),childFragmentManager))
+        navController.navigatorProvider.addNavigator(FragmentNavigatorHideShow(requireContext(), childFragmentManager, containerId))
     }
-
 
     private val containerId: Int
         get() {

@@ -8,8 +8,8 @@ object HomeDeeplink {
 
     val searchUri: Uri by lazy { Uri.parse(CommonApp.context.getString(R.string.deeplink_search)) }
 
-    fun getSearchResultUri(): Uri {
-        val string = CommonApp.context.getString(R.string.deeplink_search_result)
+    fun getSearchResultUri(key: String): Uri {
+        val string = CommonApp.context.getString(R.string.deeplink_search_result).replace("{key}", key)
         return Uri.parse(string)
     }
 }

@@ -19,8 +19,8 @@ abstract class LazyVmFragment<VM: BaseViewModel, BD: ViewDataBinding> : BaseVmFr
     override fun init(savedInstanceState: Bundle?) {
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         isLoaded = false
     }
 

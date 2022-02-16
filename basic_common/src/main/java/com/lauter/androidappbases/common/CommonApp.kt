@@ -3,6 +3,7 @@ package com.lauter.androidappbases.common
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import com.tencent.mmkv.MMKV
 
 class CommonApp: Application() {
 
@@ -14,5 +15,6 @@ class CommonApp: Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
+        MMKV.initialize(this)
     }
 }

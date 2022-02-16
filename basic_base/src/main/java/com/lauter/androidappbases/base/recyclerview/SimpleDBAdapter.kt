@@ -9,6 +9,14 @@ class SimpleDBAdapter<DB: ViewDataBinding, T>(context: Context?,
     : BaseDBAdapter<DB, T>(context, layoutRes) {
 
     override fun onBindViewHolder(db: DB, position: Int) {
-        db.setVariable(variableId, data[position])
+        db.run {
+            setVariable(variableId, data[position])
+            onItemClickListener?.let { listener ->
+                root.setOnClickListener { listener.invoke(position) }
+            }
+        }
+
     }
+
+    var onItemClickListener: ((Int) -> Unit)? = null
 }

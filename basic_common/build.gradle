@@ -15,4 +15,5 @@ dependencies {
     api project(':basic_network')
 
     api 'com.jaeger.statusbarutil:library:1.5.1'
+    api 'com.tencent:mmkv-static:1.2.9'
 }
