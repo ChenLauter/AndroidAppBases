@@ -1,6 +1,7 @@
 package com.lauter.androidappbases.apt.api
 
 import android.content.Context
+import android.util.Log
 
 
 object AppLifecycleManager {
@@ -22,6 +23,7 @@ object AppLifecycleManager {
     }
 
     fun onCreate(context: Context) {
+        Log.d("bitch", "on create $callbacks")
         callbacks?.run {
             sortBy { it.getPriority() }
             for (item in this) {
