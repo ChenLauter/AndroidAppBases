@@ -38,7 +38,7 @@ abstract class BaseTransform : Transform() {
                             val outputFile = File(file.absolutePath.replace(inputDir, outputDir))
                             FileUtils.deleteIfExists(outputFile)
                             file.copyTo(outputFile)
-                            PluginUtil.log("transform $outputFile with incremental!")
+//                            PluginUtil.log("transform $outputFile with incremental!")
                             transformFile(outputFile)
                         }
                     }
@@ -49,7 +49,7 @@ abstract class BaseTransform : Transform() {
                 output.walk().filter { it.isClass() }
                     .forEach {file ->
                         executor.execute {
-                            PluginUtil.log("transform $file without incremental!")
+//                            PluginUtil.log("transform $file without incremental!")
                             transformFile(file)
                         }
                     }
@@ -62,12 +62,12 @@ abstract class BaseTransform : Transform() {
                         FileUtils.deleteIfExists(input.file)
                     }
                     in arrayOf(Status.CHANGED, Status.ADDED) -> {
-                        PluginUtil.log("transformJar ${input.file} with incremental!")
+//                        PluginUtil.log("transformJar ${input.file} with incremental!")
                         executor.execute(TransformJarTask(input.file,output))
                     }
                 }
             } else {
-                PluginUtil.log("transformJar ${input.file} without incremental!")
+//                PluginUtil.log("transformJar ${input.file} without incremental!")
                 executor.execute(TransformJarTask(input.file,output))
             }
         }

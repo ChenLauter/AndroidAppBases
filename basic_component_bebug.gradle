@@ -1,5 +1,6 @@
 if (isModuleDebug.toBoolean()) {
     apply plugin: 'com.android.application'
+    apply plugin: 'lauter.app.lifecycle'
 } else {
     apply plugin: 'com.android.library'
 }
@@ -10,6 +11,8 @@ android {
     defaultConfig {
         if (isModuleDebug.toBoolean()) {
             applicationId = appPackageName + "." + getProject().name
+            multiDexEnabled true
+            buildConfigField("String", "API_HOST", "\"shit\"")
         }
     }
 

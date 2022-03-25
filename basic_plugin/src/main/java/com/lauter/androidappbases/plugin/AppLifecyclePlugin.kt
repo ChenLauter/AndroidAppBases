@@ -1,6 +1,8 @@
 package com.lauter.androidappbases.plugin
 
-import com.android.build.gradle.AppExtension
+import com.android.build.api.transform.QualifiedContent
+import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.internal.pipeline.TransformManager
 import com.lauter.androidappbases.plugin.Constant.APP_LIFECYCLE_CALLBACK
 import com.lauter.androidappbases.plugin.Constant.APP_LIFECYCLE_MANAGER_FILE
 import com.lauter.androidappbases.plugin.Constant.PROXY_PREFIX
@@ -19,6 +21,10 @@ class AppLifecyclePlugin : BaseTransform(), Plugin<Project> {
 
     private val appLifecycleClassNames = mutableListOf<String>()
     private var appLifecyclesJar:File? = null
+
+    override fun getScopes(): MutableSet<in QualifiedContent.Scope> {
+        return TransformManager.PROJECT_ONLY
+    }
 
     override fun transformFile(file: File) {
         val classReader = ClassReader(file.readBytes())
@@ -81,8 +87,12 @@ class AppLifecyclePlugin : BaseTransform(), Plugin<Project> {
     }
 
     override fun apply(project: Project) {
+        PluginUtil.log("${this.name} on apply")
         project.extensions.run {
-            findByType(AppExtension::class.java)?.registerTransform(this@AppLifecyclePlugin)
+            findByType(BaseExtension::class.java)?.run {
+                PluginUtil.log("${this@AppLifecyclePlugin.name} on register transform ${this}")
+                registerTransform(this@AppLifecyclePlugin)
+            }
         }
     }
 
