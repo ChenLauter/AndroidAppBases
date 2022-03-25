@@ -10,9 +10,12 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
     api project(':basic_base')
     api project(':basic_network')
+
+    api project(':basic_apt-annotation')
+    api project(':basic_apt-api')
+    api project(':basic_apt-processor')
 
     api 'com.jaeger.statusbarutil:library:1.5.1'
     api 'com.tencent:mmkv-static:1.2.9'

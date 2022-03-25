@@ -18,7 +18,7 @@ class MineFragment : BaseFragment<FragmentMineBinding>(){
         binding.btnLogin.setOnClickListener { navWithAnim(CommonDeeplink.loginUri) }
         binding.btnBaidu.setOnClickListener {
             navWithAnim(CommonDeeplink.getWebUri(
-                "http://www.baidu.com",
+                "http://www.oppo.com",
                 "百度一下"
             ))
         }

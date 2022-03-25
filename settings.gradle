@@ -1,11 +1,12 @@
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
+
 rootProject.name = "AndroidAppBases"
 include ':app'
 include ':basic_base'
@@ -17,3 +18,4 @@ include ':module_user'
 include ':basic_apt-annotation'
 include ':basic_apt-processor'
 include ':basic_apt-api'
+include ':basic_plugin'

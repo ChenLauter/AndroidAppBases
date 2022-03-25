@@ -16,3 +16,5 @@ local.properties
 /.idea/compiler.xml
 /.idea/misc.xml
 /.idea/gradle.xml
+/local-plugin-repository
+/.idea/codeStyles

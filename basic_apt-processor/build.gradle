@@ -1,15 +1,18 @@
 plugins {
     id 'java-library'
     id 'kotlin'
+    id 'kotlin-kapt'
+//    id 'just.test'
 }
 
 dependencies {
-    implementation 'com.google.auto.service:auto-service:1.0-rc6'
-    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
-    implementation 'com.squareup:javapoet:1.13.0'
+    compileOnly 'com.google.auto.service:auto-service:1.0.1'
+    kapt 'com.google.auto.service:auto-service:1.0.1'
+    compileOnlyApi 'com.squareup:kotlinpoet:1.10.2'
+    implementation project(':basic_apt-annotation')
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
