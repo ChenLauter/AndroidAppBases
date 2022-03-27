@@ -1,4 +1,4 @@
-package com.lauter.androidappbases.apt.processor
+package com.lauter.androidappbases.apt.processor.applifecycle
 
 import com.google.auto.service.AutoService
 import com.lauter.androidappbases.apt.annotation.AppLifecycle
@@ -33,7 +33,7 @@ internal class AppLifecycleProcessor : AbstractProcessor() {
             .filter { it.kind == ElementKind.CLASS }
             .filter {
                 (it as TypeElement).interfaces.contains(
-                    elements.getTypeElement(Constant.CALLBACK_QUALIFIED_NAME).asType()
+                    elements.getTypeElement(AppLifecycleConst.CALLBACK_QUALIFIED_NAME).asType()
                 )
             }
             .forEach {

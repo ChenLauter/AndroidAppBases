@@ -1,9 +1,9 @@
-package com.lauter.androidappbases.plugin
+package com.lauter.androidappbases.plugin.applifecycle
 
-import com.lauter.androidappbases.plugin.Constant.APP_LIFECYCLE_MANAGER
-import com.lauter.androidappbases.plugin.Constant.APP_LIFECYCLE_REGISTER_METHOD_NAME
 import com.lauter.androidappbases.plugin.Constant.INIT
 import com.lauter.androidappbases.plugin.Constant.INIT_DESC
+import com.lauter.androidappbases.plugin.applifecycle.AppLifecycleConst.APP_LIFECYCLE_MANAGER
+import com.lauter.androidappbases.plugin.applifecycle.AppLifecycleConst.APP_LIFECYCLE_REGISTER_METHOD_NAME
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes

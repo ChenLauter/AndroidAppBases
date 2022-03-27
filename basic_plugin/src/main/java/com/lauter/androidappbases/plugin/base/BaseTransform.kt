@@ -1,9 +1,11 @@
-package com.lauter.androidappbases.plugin
+package com.lauter.androidappbases.plugin.base
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.ide.common.internal.WaitableExecutor
 import com.android.utils.FileUtils
+import com.lauter.androidappbases.plugin.utils.forEach
+import com.lauter.androidappbases.plugin.utils.isClass
 import java.io.File
 import java.util.concurrent.Callable
 

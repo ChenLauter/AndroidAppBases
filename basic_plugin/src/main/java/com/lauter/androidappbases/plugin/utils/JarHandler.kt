@@ -1,4 +1,4 @@
-package com.lauter.androidappbases.plugin
+package com.lauter.androidappbases.plugin.utils
 
 import org.apache.commons.compress.utils.IOUtils
 import java.io.File

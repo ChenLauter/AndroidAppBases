@@ -1,6 +1,6 @@
-package com.lauter.androidappbases.apt.processor
+package com.lauter.androidappbases.apt.processor.applifecycle
 
-internal object Constant {
+internal object AppLifecycleConst {
 
     const val CALLBACK_PACKAGE = "com.lauter.androidappbases.apt.api"
 
@@ -8,9 +8,7 @@ internal object Constant {
 
     const val CALLBACK_QUALIFIED_NAME = "$CALLBACK_PACKAGE.$CALLBACK_NAME"
 
-    const val PROXY_PREFIX = "Lauter"
-
-    const val PROXY_SUFFIX = "_Proxy"
+    const val PROXY_SUFFIX = "_LauterProxy"
 
     const val CONTEXT = "android.content.Context"
 }

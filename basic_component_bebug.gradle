@@ -12,7 +12,6 @@ android {
         if (isModuleDebug.toBoolean()) {
             applicationId = appPackageName + "." + getProject().name
             multiDexEnabled true
-            buildConfigField("String", "API_HOST", "\"shit\"")
         }
     }
 

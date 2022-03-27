@@ -1,10 +1,14 @@
-package com.lauter.androidappbases.plugin
+package com.lauter.androidappbases.plugin.applifecycle
 
 import com.android.build.gradle.BaseExtension
-import com.lauter.androidappbases.plugin.Constant.APP_LIFECYCLE_CALLBACK
-import com.lauter.androidappbases.plugin.Constant.APP_LIFECYCLE_MANAGER_FILE
-import com.lauter.androidappbases.plugin.Constant.PROXY_PREFIX
-import com.lauter.androidappbases.plugin.Constant.PROXY_SUFFIX
+import com.lauter.androidappbases.plugin.applifecycle.AppLifecycleConst.APP_LIFECYCLE_CALLBACK
+import com.lauter.androidappbases.plugin.applifecycle.AppLifecycleConst.APP_LIFECYCLE_MANAGER_FILE
+import com.lauter.androidappbases.plugin.applifecycle.AppLifecycleConst.APP_LIFECYCLE_PLUGIN_NAME
+import com.lauter.androidappbases.plugin.applifecycle.AppLifecycleConst.APP_LIFECYCLE_PROXY_SUFFIX
+import com.lauter.androidappbases.plugin.base.BaseTransform
+import com.lauter.androidappbases.plugin.utils.JarHandler
+import com.lauter.androidappbases.plugin.utils.PluginUtil
+import com.lauter.androidappbases.plugin.utils.isClass
 import org.apache.commons.compress.utils.IOUtils
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,36 +19,31 @@ import java.io.File
 
 class AppLifecyclePlugin : BaseTransform(), Plugin<Project> {
 
-    override fun getName(): String = Constant.APP_LIFECYCLE_PLUGIN_NAME
+    override fun getName(): String = APP_LIFECYCLE_PLUGIN_NAME
 
     private val appLifecycleClassNames = mutableListOf<String>()
     private var appLifecyclesJar:File? = null
 
-//    override fun getScopes(): MutableSet<in QualifiedContent.Scope> {
-//        return TransformManager.PROJECT_ONLY
-//    }
-
     override fun transformFile(file: File) {
         val classReader = ClassReader(file.readBytes())
         val name = classReader.className
-        if (name.startsWith(PROXY_PREFIX) &&
-            name.endsWith(PROXY_SUFFIX) &&
+        if (name.endsWith(APP_LIFECYCLE_PROXY_SUFFIX) &&
             classReader.interfaces.contains(APP_LIFECYCLE_CALLBACK)
         ) {
-            appLifecycleClassNames.add(classReader.className)
+            appLifecycleClassNames.add(name)
         }
     }
 
     override fun transformJar(inputJar: File, outputJar: File) {
-        JarHandler.create(inputJar,outputJar).filter { _, jarEntity ->
+        JarHandler.create(inputJar, outputJar).filter { _, jarEntity ->
             if(jarEntity.name == APP_LIFECYCLE_MANAGER_FILE){
                 appLifecyclesJar = outputJar
             }
-            jarEntity.name.isClass() && jarEntity.name.endsWith("$PROXY_SUFFIX.class")
+            jarEntity.name.isClass() && jarEntity.name.endsWith("$APP_LIFECYCLE_PROXY_SUFFIX.class")
         }.map { _, inputStream ->
             val byteArray = IOUtils.toByteArray(inputStream)
             val classReader = ClassReader(byteArray)
-            if (classReader.className.endsWith(PROXY_SUFFIX) && classReader.interfaces.contains(
+            if (classReader.className.endsWith(APP_LIFECYCLE_PROXY_SUFFIX) && classReader.interfaces.contains(
                     APP_LIFECYCLE_CALLBACK
                 )
             ) {
@@ -59,6 +58,8 @@ class AppLifecyclePlugin : BaseTransform(), Plugin<Project> {
             PluginUtil.log("错误：没有找到包含${APP_LIFECYCLE_MANAGER_FILE}的jar")
             return
         }
+        PluginUtil.log("找到包含${APP_LIFECYCLE_MANAGER_FILE}的jar")
+        PluginUtil.log("appLifecycleClassNames: $appLifecycleClassNames")
         val targetJar = appLifecyclesJar!!
         // 创建临时jar
         val file = File(targetJar.parent,targetJar.nameWithoutExtension+"_temp.jar")

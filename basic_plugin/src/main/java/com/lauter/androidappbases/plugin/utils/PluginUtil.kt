@@ -1,4 +1,4 @@
-package com.lauter.androidappbases.plugin
+package com.lauter.androidappbases.plugin.utils
 
 import com.android.SdkConstants
 import com.android.build.api.transform.*

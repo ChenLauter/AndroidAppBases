@@ -1,5 +1,8 @@
-package com.lauter.androidappbases.apt.processor
+package com.lauter.androidappbases.apt.processor.applifecycle
 
+import com.lauter.androidappbases.apt.processor.applifecycle.AppLifecycleConst.CALLBACK_QUALIFIED_NAME
+import com.lauter.androidappbases.apt.processor.applifecycle.AppLifecycleConst.CONTEXT
+import com.lauter.androidappbases.apt.processor.applifecycle.AppLifecycleConst.PROXY_SUFFIX
 import com.squareup.kotlinpoet.*
 import javax.lang.model.element.TypeElement
 import javax.lang.model.util.Elements
@@ -8,9 +11,9 @@ internal class AppLifecycleProxyCreator(private val typeElement: TypeElement, pr
 
 
     private val packageName = elements.getPackageOf(typeElement).qualifiedName.toString()
-    private val fileName = "${Constant.PROXY_PREFIX}${typeElement.simpleName}${Constant.PROXY_SUFFIX}"
-    private val contextType = elements.getTypeElement(Constant.CONTEXT).asClassName()
-    private val superInterface = elements.getTypeElement(Constant.CALLBACK_QUALIFIED_NAME).asClassName()
+    private val fileName = "${typeElement.simpleName}${PROXY_SUFFIX}"
+    private val contextType = elements.getTypeElement(CONTEXT).asClassName()
+    private val superInterface = elements.getTypeElement(CALLBACK_QUALIFIED_NAME).asClassName()
 
     fun build(): FileSpec {
         return FileSpec.builder(packageName, fileName)
